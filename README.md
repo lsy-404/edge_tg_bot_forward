@@ -27,7 +27,7 @@
 ### 前置要求
 
 - [Node.js](https://nodejs.org/) 18+
-- [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/)（`npm install -g wrangler`）
+- [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/)（随项目依赖安装）
 - Cloudflare 账号（免费套餐即可）
 
 ### 步骤
@@ -38,18 +38,18 @@ git clone <repo-url>
 cd edge-tg-bot-forward
 
 # 2. 安装依赖
-npm install
+corepack pnpm@10.34.6 install --frozen-lockfile
 
 # 3. 登录 Cloudflare
-npx wrangler login
+pnpm exec wrangler login
 
 # 4. 设置允许的 Bot Token（通过 secret，不会出现在代码中）
-npx wrangler secret put ALLOWED_TOKENS
+pnpm exec wrangler secret put ALLOWED_TOKENS
 # 输入逗号分隔的 token 列表，例如：
 # 123456789:AABBccDDeeFF-your-token,987654321:ZZYYxxWWvv-other-token
 
 # 5. 部署
-npm run deploy
+pnpm run deploy
 ```
 
 部署成功后会输出：
@@ -64,7 +64,7 @@ npm run deploy
 # [vars]
 # ALLOWED_TOKENS = "your_test_token"
 
-npm run dev
+pnpm run dev
 # 访问 http://localhost:8787/bot{your_token}/getMe
 ```
 
@@ -136,7 +136,7 @@ Cloudflare Workers 免费套餐（Free Plan）：
 ## 测试
 
 ```bash
-npm test
+pnpm run test
 ```
 
 ## 许可证
